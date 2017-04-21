@@ -1,10 +1,18 @@
-var path = require('path');
+const path = require('path');
 
-var _root = path.resolve(__dirname, '..');
+const _root = path.resolve(__dirname, '..');
 
-function root(args) {
+let root = function(args) {
   args = Array.prototype.slice.call(arguments, 0);
-  return path.join.apply(path, [_root].concat(args));
-}
+  return path.join(...[_root].concat(args));
+};
 
-exports.root = root;
+const BUILD_PATH = path.resolve(__dirname, '../dist');
+
+const AUTOPREFIXER_CONF = {
+  browsers: ['Android 2.3', 'Android >= 4', 'Chrome >= 20', 'Firefox >= 24',
+    'Explorer >= 8', 'iOS >= 6', 'Opera >= 12', 'Safari >= 7'],
+  cascade: false
+};
+
+module.exports = {BUILD_PATH, AUTOPREFIXER_CONF, root};

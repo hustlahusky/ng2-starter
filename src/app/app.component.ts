@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
-
-import '../assets/css/styles.css';
+import UIkit from './lib/uikit';
 
 @Component({
   selector: 'my-app',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <main>
+      <h1>Hello from Angular App with Webpack</h1>
+    </main>
+    <test-component>olol</test-component>
+  `,
+  // styleUrls: ['./app.component.css']
 })
-export class AppComponent { }
+export class AppComponent {
+  constructor() {
+    UIkit.notification('AppComponent loaded!');
+  }
+}
